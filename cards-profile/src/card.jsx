@@ -1,3 +1,4 @@
+import SkillTag from "./skillTag"
 
 
 function Card(props) {
@@ -8,12 +9,11 @@ function Card(props) {
         <h2>{nome}</h2>
         <h3>{profissao}</h3>
         <p>{cidade}</p>
-        {skills.map(skill =>{
-            return (
-                <p>{skill}</p>
-            )
-        })}
-        {disponivel ? <p>Profissional disponivel</p> : <p>Profissional indisponivel</p>}
+        <SkillTag skills={skills}/>
+        {/* Adiciona classe dinamicamente baseado no estado 'disponivel' */}
+        <p className={disponivel ? "disponivel" : "indisponivel"}>
+            {disponivel ? "✓ Profissional disponível" : "✗ Profissional indisponível"}
+        </p>
     </article>
   )
 }
